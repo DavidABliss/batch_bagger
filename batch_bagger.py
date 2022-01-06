@@ -27,10 +27,9 @@ except:
     sys.exit("Usage: python batch_bagger.py <path to bags folder> <path to bag-info txt template> <path to bag-info CSV or XLSX spreadsheet>")
 
 # Allow users to add a -v switch, which will print each bag-info file as it is written
-try:
-    if args.v:
-        verbose = True
-except:
+if args.v:
+    verbose = True
+else:
     verbose = False
     
 # Define the text strings that will be recognized as bag-info field labels
