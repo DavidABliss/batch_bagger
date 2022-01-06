@@ -6,21 +6,29 @@ import uuid
 import csv
 import os
 import re
+import argparse
 
+parser = argparse.ArgumentParser(description='Bag a list of folders in a directory, substituting values from a CSV into a bag-info template')
+parser.add_argument('-d', '--directory', help="directory containing folders to be bagged", action="store", dest="d", default=os.path.getcwd())
+parser.add_argument('-b', '--baginfo', required=True, help="bag-info.txt file to be distributed into each bag", action="store", dest="b")
+parser.add_argument('-c', '--csv', required=True, help="CSV file containing the names of folders to be bagged, and any values to be substituted in the bag-info file", action="store", dest="c")
+parser.add_argument('-v', '--verbose', required=False, help="print the contents of each bag-info file as it is written", action="store_true", dest="v")
+
+args = parser.parse_args()
 
 
 # Require the users to provide a bags folder, a bag-info text template file, and a CSV spreadsheet
 # At a minimum, the spreadsheet must list the bags in the bag folder. 
 try:
-    bagsDir = sys.argv[1]
-    bagInfo = sys.argv[2]
-    spreadSheet = sys.argv[3]
+    bagsDir = args.d
+    bagInfo = args.b
+    spreadSheet = args.c
 except:
     sys.exit("Usage: python batch_bagger.py <path to bags folder> <path to bag-info txt template> <path to bag-info CSV or XLSX spreadsheet>")
 
 # Allow users to add a -v switch, which will print each bag-info file as it is written
 try:
-    if sys.argv[4] == '-v':
+    if args.v:
         verbose = True
 except:
     verbose = False
