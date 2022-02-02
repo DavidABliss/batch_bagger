@@ -24,3 +24,5 @@ All bags are created in place.
 Finally, the script outputs a CSV list of bags that were created, alongside the UUID assigned to each. This is meant for recordkeeping, but can be modified or removed as needed.
 
 This script is written for the UT Libraries' local bag-info spec, and will not recognize any terms not found in fieldsList as labels for the output bag-info.txt files. The script can be made to work with other bag-info specs by modifying that list.
+
+Users can add the <code>-u --unpack</code> switch to "unbag" a series of folders. If a spreadsheet is provided, bags listed in the first column will be unpacked within the target directory (cwd by default). If no spreadsheet is provided, the script will test each folder in the target directory and skip any folders not containing a bag-info.txt file. Because the unpack function will invalidate bags in the target directory, the script displays a warning message and asks the user to confirm that they wish to proceed.
