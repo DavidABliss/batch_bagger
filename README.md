@@ -3,7 +3,7 @@ Create many bags at once, using a bag-info template and a CSV or XLSX spreadshee
 
 Usage: 
 
-<code>python batch_bagger.py --directory <path_to_bags_directory> --baginfo <path_to_bag-info_template_txt_file> --csv <path_to_bag-info_CSV_spreadsheet> --verbose</code>
+<code>python batch_bagger.py --directory <path_to_bags_directory> --baginfo <path_to_bag-info_template_txt_file> --spreadsheet <path_to_bag-info_metadata_spreadsheet> --verbose</code>
 
 This script compiles folders in a target directory into individual bags. Users supply a target directory, a bag-info.txt template file, and a CSV or XLSX spreadsheet containing bag-level information. The script reads the CSV or XLSX spreadsheet, matches each entry to a bag in the target directory, and builds a bag-info file using the bag-info template file, supplemented with any bag-specific information provided in the spreadsheet.
 
