@@ -12,7 +12,7 @@ import shutil
 parser = argparse.ArgumentParser(description='Bag a list of folders in a directory, substituting values from a CSV into a bag-info template')
 parser.add_argument('-d', '--directory', help="directory containing folders to be bagged", action="store", dest="d", default=os.getcwd())
 parser.add_argument('-b', '--baginfo', required=False, help="bag-info.txt file to be distributed into each bag", action="store", dest="b")
-parser.add_argument('-c', '--csv', required=False, help="CSV file containing the names of folders to be bagged, and any values to be substituted in the bag-info file", action="store", dest="c")
+parser.add_argument('-s', '--spreadsheet', required=False, help="CSV or XLSX file containing the names of folders to be bagged, and any values to be substituted in the bag-info file", action="store", dest="c")
 parser.add_argument('-v', '--verbose', required=False, help="print the contents of each bag-info file as it is written", action="store_true", dest="v")
 parser.add_argument('-u', '--unpack', required=False, help="unpack existing bags' data directories", action="store_true", dest="u")
 
@@ -179,8 +179,8 @@ if args.u:
         input("Press Enter here to continue, or CTRL+C to abort...")
     except KeyboardInterrupt:
         sys.exit('\nScript aborted by user.')
-    if args.c:
-        spreadSheet = args.c
+    if args.s:
+        spreadSheet = args.s
         if spreadSheet.endswith('.csv'):
             with open(spreadSheet, 'r', encoding='utf-8') as bag_spreadsheet:
                 spreadsheet_reader = csv.reader(bag_spreadsheet, delimiter=',', quotechar='"')
@@ -220,10 +220,10 @@ if args.u:
                     print('Directory ' + item + ' is not a bag, skipping...')
     
 if not args.u:
-    if not args.c:
+    if not args.s:
         sys.exit('Please provide a CSV or XLSX bag-info spreadsheet and run again.')
     else:
-        spreadSheet = args.c
+        spreadSheet = args.s
     
     if not args.b:
         sys.exit('Please provide a template bag-info file and run again.')
