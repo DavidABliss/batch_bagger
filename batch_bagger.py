@@ -12,7 +12,7 @@ import shutil
 parser = argparse.ArgumentParser(description='Bag a list of folders in a directory, substituting values from a CSV into a bag-info template')
 parser.add_argument('-d', '--directory', help="directory containing folders to be bagged", action="store", dest="d", default=os.getcwd())
 parser.add_argument('-b', '--baginfo', required=False, help="bag-info.txt file to be distributed into each bag", action="store", dest="b")
-parser.add_argument('-s', '--spreadsheet', required=False, help="CSV or XLSX file containing the names of folders to be bagged, and any values to be substituted in the bag-info file", action="store", dest="c")
+parser.add_argument('-s', '--spreadsheet', required=False, help="CSV or XLSX file containing the names of folders to be bagged, and any values to be substituted in the bag-info file", action="store", dest="s")
 parser.add_argument('-v', '--verbose', required=False, help="print the contents of each bag-info file as it is written", action="store_true", dest="v")
 parser.add_argument('-u', '--unpack', required=False, help="unpack existing bags' data directories", action="store_true", dest="u")
 
